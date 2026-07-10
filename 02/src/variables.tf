@@ -29,10 +29,32 @@ variable "vpc_name" {
 }
 
 
+variable "project" {
+  type    = string
+  default = "netology"
+}
+
+variable "vm_web_role" {
+  type    = string
+  default = "web"
+}
+
+variable "vm_db_role" {
+  type    = string
+  default = "db"
+}
+
+###test var for task 8*
+
+variable "test" {
+  type = list(map(list(string)))
+}
+
 ###ssh vars
 
-variable "vms_ssh_root_key" {
-  type        = string
-  default     = "<your_ssh_ed25519_key>"
-  description = "ssh-keygen -t ed25519"
-}
+# variable "vms_ssh_root_key" {
+#   type        = string
+#   default     = "<your_ssh_ed25519_key>"
+#   description = "ssh-keygen -t ed25519"
+# }
+
