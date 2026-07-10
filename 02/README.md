@@ -62,9 +62,9 @@ locals {
 ```
 
 ## Задание 6
-Введены map-переменные:
-- `vms_resources` — конфиги обеих ВМ (cores, memory, core_fraction, hdd_size, hdd_type)
-- `metadata` — общий блок metadata для всех ВМ
+Ввел map-переменные:
+`vms_resources` — конфиги обеих ВМ (cores, memory, core_fraction, hdd_size, hdd_type)
+`metadata` — общий блок metadata для всех ВМ
 
 Неиспользуемые переменные закомментированы.
 
@@ -76,5 +76,5 @@ locals {
 4. `"${local.test_map["admin"]} is ${keys(local.test_map)[0]} for ${local.test_list[2]} server based on OS ${local.servers["production"].image} with ${local.servers["production"].cpu} vcpu, ${local.servers["production"].ram} ram and ${length(local.servers["production"].disks)} virtual disks"` → `"John is admin for production server based on OS ubuntu-20-04 with 10 vcpu, 40 ram and 4 virtual disks"`
 
 ## Задание 8*
-- Тип переменной `test`: `list(map(list(string)))`
-- Извлечение строки: `var.test[0]["dev1"][0]` → `"ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117"`
+Тип переменной `test`: `list(map(list(string)))`
+Извлечение строки: `var.test[0]["dev1"][0]` → `"ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117"`
