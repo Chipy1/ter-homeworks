@@ -10,7 +10,13 @@ curl ifconfig.me
 ### Ответы на вопросы
 
 **В чём суть исправленных ошибок?**
-В `main.tf` опечатка: `platform_id = "standart-v4"` вместо `"standard-v4"`. Плюс `standard-v4` тоже нет в YC, используется `standard-v1`. Terraform validate не ловит такие ошибки - только apply показывает.
+В `main.tf` опечатка: `platform_id = "standart-v4"` вместо `"standard-v4"`. Terraform validate её не поймал - для него это просто строка. Ошибка всплыла только на `terraform apply`, когда API Yandex Cloud не нашёл платформу.
+
+Кроме того, `standard-v4` не существует в YC (актуальные: `standard-v1`, `v2`, `v3`). Пришлось сменить на `standard-v1`. Вывод: `validate` проверяет только синтаксис, а корректность значений - только `apply`.
+
+Из-за `standard-v1` пришлось поднять `cores` web-ВМ с 1 до 2 - платформа не поддерживает одно ядро.
+
+Ещё в `providers.tf` изменён `required_version` с `"~>1.12.0"` на `"~>1.12"`, так как локальная версия Terraform 1.15.8 не попадала в диапазон `>=1.12, <1.13`. Новая версия constraint расширяет до `<2.0`.
 
 **Зачем `preemptible = true` и `core_fraction = 5`?**
 `preemptible = true` - прерываемая ВМ (до 24ч), дешевле на ~60%.
