@@ -72,7 +72,7 @@ locals {
 `vms_resources` — конфиги обеих ВМ (cores, memory, core_fraction, hdd_size, hdd_type)
 `metadata` — общий блок metadata для всех ВМ
 
-Неиспользуемые переменные закомментированы.
+Неиспользуемые переменные закомментил.
 
 ## Задание 7*
 Команды `terraform console`:
